@@ -9,6 +9,8 @@ To build Spearmint for Android do the following;
 Symlink or hg clone SDL2 into jni/SDL
 Symlink or git clone spearmint's android branch into jni/spearmint
 
+Edit local.properties and set the path to your Android SDK.
+
 Create jni/spearmint/Makefile.local with the following:
 ANDROID_NDK_DIR=/path/to/android-ndk-r8d
 
@@ -22,9 +24,9 @@ make -C jni/spearmint COMPILE_PLATFORM=android COMPILE_ARCH=armeabi-v7a
 make -C jni/spearmint COMPILE_PLATFORM=android COMPILE_ARCH=x86
 make -C jni/spearmint COMPILE_PLATFORM=android COMPILE_ARCH=mips
 
-	(If you don't want to build all of them edit jni/Application.mk)
+	(If you don't want to build all of them, edit jni/Application.mk so that ndk-build won't error when they're missing.)
 
-Run Android NDK r86 ndk-build, i.e. /path/to/android-ndk-r8d/ndk-build
+Run Android NDK r8d ndk-build, i.e. /path/to/android-ndk-r8d/ndk-build
 
 Run 'ant debug'
 
