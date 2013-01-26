@@ -1,0 +1,32 @@
+This is a Android SDL project for building Spearmint (a modified ioquake3 engine).
+
+Currently this might not be working. SDL2 doesn't seem to work on my Android device (Droid) and the apk created here seems to fail in the emulator.
+
+Requires Android SDK and Android NDK r8d.
+
+To build Spearmint for Android do the following;
+
+Symlink or hg clone SDL2 into jni/SDL
+Symlink or git clone spearmint's android branch into jni/spearmint
+
+Create jni/spearmint/Makefile.local with the following:
+ANDROID_NDK_DIR=/path/to/android-ndk-r8d
+
+SDL MIPS compile fix:
+Add "#define HAVE_GCC_ATOMICS	1" in jni/SDL/include/SDL_config_android.h
+	(After this has been verified that it is okay, it should be submitted upstream...)
+
+Run the following:
+make -C jni/spearmint COMPILE_PLATFORM=android COMPILE_ARCH=armeabi
+make -C jni/spearmint COMPILE_PLATFORM=android COMPILE_ARCH=armeabi-v7a
+make -C jni/spearmint COMPILE_PLATFORM=android COMPILE_ARCH=x86
+make -C jni/spearmint COMPILE_PLATFORM=android COMPILE_ARCH=mips
+
+	(If you don't want to build all of them edit jni/Application.mk)
+
+Run Android NDK r86 ndk-build, i.e. /path/to/android-ndk-r8d/ndk-build
+
+Run 'ant debug'
+
+Now you should have bin/SpearmintActivity-debug.apk which can be installed and tested.
+
