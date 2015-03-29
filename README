@@ -2,7 +2,9 @@ This is a Android SDL project for building Spearmint (a modified ioquake3 engine
 
 Currently this might not be working. SDL2 doesn't seem to work on my Android device (Droid) and the apk created here seems to fail in the emulator.
 
-Requires Android SDK and Android NDK r8d.
+Tested with Android SDK (with API 10 tools), Android NDK r8d, and JDK (openjdk-6-jdk package on Debian and Ubuntu).
+
+	SDL requires API 10 or later. Android NDK r8d was latest when I started this, later versions may work.
 
 To build Spearmint for Android do the following;
 
